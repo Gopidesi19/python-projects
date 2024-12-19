@@ -1,25 +1,11 @@
 pipeline {
     agent any
     stages{
-        stage ("version"){
+        stage ("checkout"){
             steps{
-                sh "python --version"
+                checkout scmGit(branches: [[name: '*/feature']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Gopidesi19/python-projects.git']])
             }
         }
-        stage ("Build"){
-            steps{
-                sh "Hello world!"
-            }
-        }
-        stage ("test"){
-            steps{
-                echo "this stage has been tested"
-            }
-        }
-        stage ("deploy"){
-            steps{
-                echo "python program has successfully deployed"
-            }
-        }
+        
     }
 }
